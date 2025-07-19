@@ -1,0 +1,21 @@
+const express = require("express");
+const router = express.Router();
+const Entry = require("../models/Entry");
+
+router.get("/", async (req, res) => {
+  const entries = await Entry.find().sort({ createdAt: -1 });
+  res.json(entries);
+});
+
+router.post("/", async (req, res) => {
+  const { title, note, date, location } = req.body;
+  try {
+    const newEntry = new Entry({ title, note, date, location });
+    await newEntry.save();
+    res.status(201).json(newEntry);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to save entry" });
+  }
+});
+
+module.exports = router;
