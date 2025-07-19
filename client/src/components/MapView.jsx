@@ -8,13 +8,14 @@ import {
 import { useState } from "react";
 
 const MapView = ({ onAddEntry, entries }) => {
-  const [position, setPosition] = useState(null);
+  const [clickedPos, setClickedPos] = useState(null);
 
   const MapClickHandler = () => {
     useMapEvents({
       click(e) {
-        setPosition(e.latlng);
-        onAddEntry(e.latlng);
+        const { lat, lng } = e.latlng;
+        setClickedPos({ lat, lng });
+        onAddEntry({ lat, lng });
       },
     });
     return null;
@@ -30,16 +31,16 @@ const MapView = ({ onAddEntry, entries }) => {
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <MapClickHandler />
 
-      {/* New marker from clicking */}
-      {position && (
-        <Marker position={position}>
+      {/* Optional preview marker for new entry */}
+      {clickedPos && (
+        <Marker position={[clickedPos.lat, clickedPos.lng]}>
           <Popup>New Entry Location</Popup>
         </Marker>
       )}
 
-      {/* Existing entries from DB */}
-      {entries.map((entry, idx) => (
-        <Marker key={idx} position={[entry.location.lat, entry.location.lng]}>
+      {/* Existing entries from database */}
+      {entries?.map((entry, i) => (
+        <Marker key={i} position={[entry.location.lat, entry.location.lng]}>
           <Popup>
             <strong>{entry.title}</strong>
             <br />

@@ -20,7 +20,7 @@ function App() {
         entryData
       );
       console.log("Entry saved:", response.data);
-      setEntries((prev) => [response.data, ...prev]); // Add new pin immediately
+      setEntries((prev) => [response.data, ...prev]);
     } catch (error) {
       console.error("Error saving entry:", error);
     }

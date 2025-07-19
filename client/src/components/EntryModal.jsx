@@ -21,7 +21,7 @@ export default function EntryModal({ isOpen, onClose, onSubmit, location }) {
     <Dialog
       open={isOpen}
       onClose={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40"
     >
       <Dialog.Panel className="bg-white p-6 rounded-xl w-full max-w-md shadow-xl space-y-4">
         <Dialog.Title className="text-xl font-bold">
