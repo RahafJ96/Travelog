@@ -11,7 +11,6 @@ Travelog is a full-stack web application that lets users document their travel e
 
 - 📍 **Click-to-Pin Travel Locations**  
   Click anywhere on the map to create a new travel journal entry
-
 - ✍️ **Add Notes & Dates**  
   Fill out a simple form to describe your trip and select the visit date
 
