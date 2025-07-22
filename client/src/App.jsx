@@ -26,6 +26,15 @@ function App() {
     }
   };
 
+  const handleDeleteEntry = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/entries/${id}`);
+      setEntries((prev) => prev.filter((entry) => entry._id !== id));
+    } catch (err) {
+      console.error("Delete error:", err);
+    }
+  };
+
   // Load entries from backend
   useEffect(() => {
     const fetchEntries = async () => {
@@ -42,7 +51,11 @@ function App() {
 
   return (
     <>
-      <MapView onAddEntry={handleAddEntry} entries={entries} />
+      <MapView
+        onAddEntry={handleAddEntry}
+        entries={entries}
+        onDelete={handleDeleteEntry}
+      />
       <EntryModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

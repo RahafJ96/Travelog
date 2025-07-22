@@ -7,7 +7,7 @@ import {
 } from "react-leaflet";
 import { useState } from "react";
 
-const MapView = ({ onAddEntry, entries }) => {
+const MapView = ({ onAddEntry, entries, onDelete }) => {
   const [clickedPos, setClickedPos] = useState(null);
 
   const MapClickHandler = () => {
@@ -47,6 +47,12 @@ const MapView = ({ onAddEntry, entries }) => {
             {entry.note}
             <br />
             <em>{entry.date}</em>
+            <button
+              onClick={() => onDelete(entry._id)}
+              className="mt-2 px-2 py-1 bg-red-500 text-white rounded text-sm"
+            >
+              Delete
+            </button>
           </Popup>
         </Marker>
       ))}

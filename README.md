@@ -8,7 +8,6 @@ Travelog is a full-stack web application that lets users document their travel e
 
 - 🗺 **Interactive World Map**  
   Explore and zoom into any part of the world using Leaflet.js
-
 - 📍 **Click-to-Pin Travel Locations**  
   Click anywhere on the map to create a new travel journal entry
 - ✍️ **Add Notes & Dates**  
